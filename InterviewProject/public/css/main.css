@@ -1,0 +1,230 @@
+/* Header Begin */
+	.header-wrapper {
+		width: 100%;
+	}
+
+	.breadcrumb {
+		display: -webkit-box;
+		display: -ms-flexbox;
+		display: flex;
+		-ms-flex-wrap: wrap;
+		flex-wrap: wrap;
+		padding: 0.75rem 1rem;
+		margin-bottom: 1rem;
+		list-style: none;
+		background-color: #e9ecef;
+		border-radius: 0.25rem;
+	}
+
+	.breadcrumb-item.active {
+		color: #6c757d;
+	}
+
+	.breadcrumb-item {
+		color: #007bff;
+		text-decoration: none;
+		background-color: transparent;
+	}
+
+	.breadcrumb-item + .breadcrumb-item::before {
+		display: inline-block;
+		padding-right: 0.5rem;
+		padding-left: 0.5rem;
+		color: #6c757d;
+		content: "/";
+	}
+
+	.title-wrapper {
+		font-size: 2em;
+		font-weight: bold;
+		text-transform: uppercase;
+		padding: 0.75rem 1.25rem;
+		margin-bottom: 0;
+		background-color: rgba(0, 0, 0, 0.03);
+		border-bottom: 1px solid rgba(0, 0, 0, 0.125);
+	}
+/* Header End */
+
+/* <----------------------------------------> */
+
+/* Edit Products page styles Begin */
+
+.edit-product-wrapper {
+    display: flex;
+    /* 	justify-content: space-between; */
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+.edit-product-wrapper .order-search-input-wrapper {
+	margin-bottom: 25px;
+}
+
+/* Edit Products page styles End */
+
+/* <----------------------------------------> */
+
+/* Orders page styles Begin */
+
+.order-search-wrapper {
+	width: 100%;
+	padding: 30px 20px;
+	background-color: rgba(0, 0, 0, 0.03);
+}
+
+.order-search-form {
+	display: flex;
+	justify-content: space-around;
+}
+
+.order-search-input-wrapper {	
+	width: 40%;
+}
+
+.order-search-input-wrapper input, .search-btn {
+	height: 35px;
+}
+
+.select2-selection__rendered {
+    line-height: 31px !important;
+}
+.select2-container .select2-selection--single {
+    height: 35px !important;
+}
+.select2-selection__arrow {
+    height: 34px !important;
+}
+
+/* Orders page styles End */
+
+/* <----------------------------------------> */
+
+/* Home page styles Begin */
+	.home-contnet-wrapper {
+		padding: 200px;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+	}
+
+	.btn-wrapper {
+		width: 200px;
+		margin-bottom: 20px;
+	}
+
+	.btn-wrapper a {
+		width: 100%;
+	}
+
+	body {
+		font-family: 'Raleway';
+	}
+
+/* Home page styles End */
+
+/* <----------------------------------------> */
+
+/* base styles Begin */
+
+	.content-wrapper {
+		/*text-align: center;*/
+		margin: 0 auto;
+	}
+
+/* Base styles End */
+
+/* <----------------------------------------> */
+
+/* Table styles Begin*/
+	@import "compass/css3";
+	@import 'https://fonts.googleapis.com/css?family=Montserrat:300,400,700';
+	.rwd-table {
+		width: 100%;
+		margin: 1em 0;
+		min-width: 300px;
+	}
+	.rwd-table tr {
+		border-top: 1px solid #ddd;
+		border-bottom: 1px solid #ddd;
+	}
+	.rwd-table th {
+		-webkit-touch-callout: none; /* iOS Safari */
+		-webkit-user-select: none; /* Safari */
+		-khtml-user-select: none; /* Konqueror HTML */
+		-moz-user-select: none; /* Old versions of Firefox */
+		-ms-user-select: none; /* Internet Explorer/Edge */
+		user-select: none;
+		cursor: pointer;
+		display: none;
+	}
+	.rwd-table td {
+		display: block;
+	}
+	.rwd-table td:first-child {
+		padding-top: 0.5em;
+	}
+	.rwd-table td:last-child {
+		padding-bottom: 0.5em;
+	}
+	.rwd-table td:before {
+		content: attr(data-th) ": ";
+		font-weight: bold;
+		width: 6.5em;
+		display: inline-block;
+	}
+	@media (min-width: 480px) {
+		.rwd-table td:before {
+			display: none;
+		}
+	}
+	.rwd-table th, .rwd-table td {
+		text-align: center;
+	}
+	@media (min-width: 480px) {
+		.rwd-table th, .rwd-table td {
+			display: table-cell;
+			padding: 0.25em 0.5em;
+		}
+		.rwd-table th:first-child, .rwd-table td:first-child {
+			padding-left: 0;
+		}
+		.rwd-table th:last-child, .rwd-table td:last-child {
+			padding-right: 0;
+		}
+	}
+	body {
+		padding: 0 2em;
+		font-family: Montserrat, sans-serif;
+		-webkit-font-smoothing: antialiased;
+		text-rendering: optimizeLegibility;
+		color: #444;
+		/* background: #eee; */
+	}
+	h1 {
+		font-weight: normal;
+		letter-spacing: -1px;
+		color: #34495e;
+	}
+	.rwd-table {
+		background: #34495e;
+		color: #fff;
+		border-radius: 0.4em;
+		overflow: hidden;
+	}
+	.rwd-table tr {
+		border-color: #46637f;
+	}
+	.rwd-table th, .rwd-table td {
+		margin: 0.5em 1em;
+	}
+	@media (min-width: 480px) {
+		.rwd-table th, .rwd-table td {
+			padding: 1em !important;
+		}
+	}
+	.rwd-table th, .rwd-table td:before {
+		color: #dd5;
+	}
+
+/* Table styles End*/
