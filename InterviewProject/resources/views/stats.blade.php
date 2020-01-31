@@ -15,7 +15,7 @@
 
         <div class="order-search-wrapper">
             <form class="order-search-form" method="get" action="{{route('orders')}}">
-                @csrf
+                <!-- @csrf -->
                 <div class="order-search-input-wrapper">
                     <input type="text" class="form-control" id="keyword" value="{{isset($attr['keyword']) && $attr['keyword'] ? $attr['keyword'] : ''}}" name="keyword" aria-describedby="Enter keyword" placeholder="keyword">
                 </div>

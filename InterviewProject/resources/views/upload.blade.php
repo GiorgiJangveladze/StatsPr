@@ -6,20 +6,20 @@
             <li class="breadcrumb-item"><a href="{{route('home')}}">Home</a></li>
             <li class="breadcrumb-item active">Upload File</li>
         </ol>
-        <div class="title-wrapper">Upload File</div>    
-    </div> 
+        <div class="title-wrapper">Upload File</div>
+    </div>
 @endsection
 
 @section('content')
-    <div class="content-wrapper"> 
+    <div class="content-wrapper">
 
         <div class="edit-product-wrapper">
             <form class="edit-product-wrapper" method="post" action="{{route('upload.store')}}" enctype="multipart/form-data">
                 @csrf
-                
+
                 <div class="order-search-input-wrapper">
                     <select class="form-control" id="select_type" name="type" >
-                        <option value="client" @if(old('type') == "clients")  selected="selected" @endif> For Client Table</option>
+                        <option value="clients" @if(old('type') == "clients")  selected="selected" @endif> For Client Table</option>
                         <option value="products" @if(old('type') == "products")  selected="selected" @endif> For Products Table</option>
                     </select>
                     @if ($errors->has('type'))
@@ -40,9 +40,9 @@
                 </div>
             </form>
         </div>
-        
+
         </br>
 
-       
+
     </div>
 @endsection

@@ -19,10 +19,10 @@ class ProductImport implements ToCollection, WithStartRow
         foreach ($rows as $row) 
         {
         	$formatedDate = \Carbon\Carbon::instance(\PhpOffice\PhpSpreadsheet\Shared\Date::excelToDateTimeObject($row[3]));
-         	$clientId = Client::where('name','=',$row[0])->first()->id;
+         	$client = Client::where('name','=',$row[0])->first();
         	Product::updateOrCreate(
 			    [
-			    	'client_id' => $clientId,
+			    	'client_id' => $client->id,
 			    	'product' => $row[1],
 			    	'date' => $formatedDate,
 			    ],

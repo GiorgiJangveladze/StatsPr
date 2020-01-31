@@ -2,34 +2,47 @@
 
 namespace App\Http\Controllers;
 
+use App\Traits\SafeResponse;
 use Illuminate\Http\Request;
 use App\Repositories\StatsRepository;
 use App\Http\Requests\UpdateRequest;
 
 class StatController extends Controller
 {
+    use SafeResponse;
+
     private $repository;
+
     public function __construct(StatsRepository $repository) {
-        $this->repository = $repository; 
+        $this->repository = $repository;
     }
 
-    public function index(Request $request) {   
-    	return $this->repository->index($request->except('_token'));
+    public function index(Request $request) {
+        try{
+
+            list($products, $types, $attr, $chart) = $this->repository->index($request->except('_token'));
+            return view('stats',compact('products','types', 'attr', 'chart'));
+
+        } catch (\Throwable $e) {
+             return redirect()->route('home')->with('error',"Something went's wrong!");
+        }
     }
-   	
-   	public function edit($id) {   
-        return $this->repository->setModel($id)->editProducts();
+
+   	public function edit($id) {
+        list($product, $clients) =  $this->repository->setModel($id)->editProducts();
+        return view('modules.products.edit',compact('product', 'clients'));
     }
 
     public function update(UpdateRequest $request, $id) {
-        
-        try {
-            $this->repository->setModel($id)->updateProduct($request->except('_token'));
-        } catch (\Throwable $e) {
-             return back()->with('error',"Can't update Order ");
-        }
+        $messages = [
+            'success' => "Oder Updated",
+            'error' => "Can't update Order"
+        ];
 
-        return back()->with('success','Oder Updated');
+        list($responseType, $responseText) = $this->safeResponse(function() use ($request, $id) {
+            $this->repository->setModel($id)->updateProduct($request->except('_token'));
+        }, $messages);
+        return  back()->with($responseType, $responseText);
     }
 
     public function delete(Request $request) {
@@ -40,14 +53,15 @@ class StatController extends Controller
 
     public function send(Request $request)
     {
-        // try {
-             $this->repository->sendReport($request->except('_token'));
-        // } catch (\Throwable $e) {
-        //      return back()->with('error',"Something Went's Wrong");
-        // }
+        $messages = [
+            'success' => "Report successfuly sended",
+            'error' => "Something Went's Wrong"
+        ];
 
-        return back()->with('success','Report Sended');
+        list($responseType, $responseText) = $this->safeResponse(function() use ($request) {
+            $this->repository->sendReport($request->except('_token'));
+        }, $messages);
 
-
+        return  back()->with($responseType, $responseText);
     }
 }

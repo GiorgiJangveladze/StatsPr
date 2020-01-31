@@ -89,7 +89,7 @@
        .rwd-table th, .rwd-table td:before {
          color: #dd5;
       }
-  </style>    
+  </style>
 </head>
 <body style="margin:0; padding:0; background-color:#F2F2F2;">
   <center>
