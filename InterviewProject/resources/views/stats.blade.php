@@ -35,11 +35,11 @@
         </br>
 
         <div class="chart-wrapper">
-            <canvas id="myChart"></canvas>
+            {!! $chart->container() !!}
         </div>
 
         </br>
-            <a href="#">Email this report</a>
+            <a href="{{route('send_report')}}">Email this report</a>
         </br>
 
         <div class="table-wrapper">
@@ -56,7 +56,7 @@
                 <td data-th="client">{{$product->client}}</td>
                 <td data-th="product">{{$product->product}}</td>
                 <td data-th="total">{{$product->total}}</td>
-                <td data-th="date">{{$product->date}}</td>
+                <td data-th="date">{{ date('d/m/Y', strtotime($product->date)) }}</td>
                 <td data-th="actions">
                     <a href="{{route('orders.edit',$product->id)}}" class="btn btn-primary btn-icon">
                       <div>Edit</div>
@@ -72,6 +72,7 @@
         </div>
         <p>{{ $products->appends(request()->except('page'))->links() }}</p>
     </div>
+    {!! $chart->script() !!}
 @endsection
 
 @section('scripts')

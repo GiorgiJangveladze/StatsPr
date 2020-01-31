@@ -18,7 +18,7 @@ class CreateProductsTable extends Migration
             $table->unsignedInteger('client_id')->index();
             $table->string("product");
             $table->Integer("total");
-            $table->timestamp('date');
+            $table->timestamp('date')->nullable();
             $table->foreign("client_id")->references("id")->on("clients")->onDelete("cascade")->onUpdate("cascade");
         });
     }

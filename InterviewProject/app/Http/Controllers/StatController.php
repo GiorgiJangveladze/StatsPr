@@ -4,11 +4,11 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Repositories\StatsRepository;
+use App\Http\Requests\UpdateRequest;
 
 class StatController extends Controller
 {
     private $repository;
-
     public function __construct(StatsRepository $repository) {
         $this->repository = $repository; 
     }
@@ -17,31 +17,17 @@ class StatController extends Controller
     	return $this->repository->index($request->except('_token'));
     }
    	
-   	// public function create() {   
-   	// 	return view('admin.modules.categories.add');
-    // }
-   	
    	public function edit($id) {   
-        return $this->repository->editProducts($id);
+        return $this->repository->setModel($id)->editProducts();
     }
-   	
-
-    // public function store(StoreRequest $request) {
-    // 	try {
-    //         $this->repository->storeCategory($request->except('_token'));
-    //     } catch (\Throwable $e) {
-    //          return back()->with('error',"Can't create Category ");
-    //     }
-
-    //     return back()->with('success','Category Created');
-    // }
 
     public function update(UpdateRequest $request, $id) {
-        // try {
-        //     $this->repository->setModel($id)->updateCategory($request->except('_token'));
-        // } catch (\Throwable $e) {
-        //      return back()->with('error',"Can't update Category ");
-        // }
+        
+        try {
+            $this->repository->setModel($id)->updateProduct($request->except('_token'));
+        } catch (\Throwable $e) {
+             return back()->with('error',"Can't update Order ");
+        }
 
         return back()->with('success','Oder Updated');
     }
@@ -50,5 +36,18 @@ class StatController extends Controller
     	if($request->ajax()) {
     		return $this->repository->setModel($request->id)->deleteProduct($request->all());
         }
+    }
+
+    public function send(Request $request)
+    {
+        // try {
+             $this->repository->sendReport($request->except('_token'));
+        // } catch (\Throwable $e) {
+        //      return back()->with('error',"Something Went's Wrong");
+        // }
+
+        return back()->with('success','Report Sended');
+
+
     }
 }

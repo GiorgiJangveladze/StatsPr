@@ -8,6 +8,7 @@ class Client extends Model
 {
     public $table = 'clients';
     public $fillable = ['name'];
+    public $timestamps = false;
 
     public function products()
     {
